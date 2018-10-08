@@ -41,7 +41,14 @@ func main() {
 	}
 
 	resourceMap := getResources()
-	fmt.Print(string(processResources(resourceMap)))
+	//to prevent yaml returns []
+	y := strings.TrimSpace(string(processResources(resourceMap)))
+	if y == "[]" {
+		fmt.Print("")
+	} else {
+		fmt.Print(y)
+	}
+
 }
 
 func getResources() []string {
